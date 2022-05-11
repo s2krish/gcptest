@@ -16,10 +16,10 @@ spec:
         app: gcptest
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/gcptest:${SHORT_SHA}
+      - image: us-central1-docker.pkg.dev/truckbase-348717/testrepo/gcptest:${SHORT_SHA}
         name: gcptest
-  nodeSelector:
-    cloud.google.com/gke-nodepool: default-pool
+      nodeSelector:
+        cloud.google.com/gke-nodepool: default-pool
 ---
 apiVersion: v1
 kind: Service
