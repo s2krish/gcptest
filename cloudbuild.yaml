@@ -17,7 +17,7 @@ steps:
   #     - '_ARTIFACT_REGISTRY_REPO=${_ARTIFACT_REGISTRY_REPO}'
   #     - _IMAGE_NAME=${_IMAGE_NAME}
 
-  - name: 'ubuntu:trusty'
+  - name: 'debian:stretch'
     entrypoint: 'bash'
     args: ['-c', "envsubst < deployment.yaml > deployment_v1.yaml"]
     env:
