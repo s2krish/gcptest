@@ -17,7 +17,7 @@ steps:
   #     - '_ARTIFACT_REGISTRY_REPO=${_ARTIFACT_REGISTRY_REPO}'
   #     - _IMAGE_NAME=${_IMAGE_NAME}
 
-  - name: 'us-central1-docker.pkg.dev/truckbase-348717/envsubst/envsubst'
+  - name: 'us-central1-docker.pkg.dev/truckbase-348717/envsubst/envsubst:latest'
     entrypoint: 'bash'
     args: ['-c', "envsubst < deployment.yaml > deployment_v1.yaml"]
     env:
