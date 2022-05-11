@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: {_APP_NAME}
-  name: {_APP_NAME}
+    app: '${_APP_NAME}'
+  name: '${_APP_NAME}'
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: {_APP_NAME}
+      app: '${_APP_NAME}'
   template:
     metadata:
       labels:
-        app: {_APP_NAME}
+        app: '${_APP_NAME}'
     spec:
       containers:
       - image: 'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/${_IMAGE_NAME}:${SHORT_SHA}'
-        name: {_APP_NAME}
+        name: '${_APP_NAME}'
       nodeSelector:
         cloud.google.com/gke-nodepool: m2g
 ---
@@ -25,8 +25,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: {_APP_NAME}
-  name: {_APP_NAME}
+    app: '${_APP_NAME}'
+  name: '${_APP_NAME}'
   namespace: default
 spec:
   ports:
@@ -34,6 +34,6 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: {_APP_NAME}
+    app: '${_APP_NAME}'
   sessionAffinity: None
   type: LoadBalancer
