@@ -2,17 +2,25 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t',
-           'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/gcptest:${SHORT_SHA}', '.']
+           'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/${_APPNAME}:${SHORT_SHA}', '.']
 
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/gcptest:${SHORT_SHA}']
+    args: ['push',  'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/${_APPNAME}:${SHORT_SHA}']
+
+  # Update environment variables
+  - name: 'ubuntu'
+    args: ['envsubst', '<', 'deployment.yaml', '>', 'deployment_v1.yaml']
+    env:
+      - 'SHORT_SHA=${SHORT_SHA}'
+      - 'PROJECT_ID=${PROJECT_ID}'
+      - '_ARTIFACT_REGISTRY_REPO=${_ARTIFACT_REGISTRY_REPO}'
+      - _APPNAME=${_APPNAME}
 
   # apply deployment.yaml
   - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'deployment.yaml']
+    args: ['apply', '-f', 'deployment_v1.yaml']
     env:
-      - 'SHORT_SHA=${SHORT_SHA}'
       - 'PROJECT_ID=${PROJECT_ID}'
       - '_ARTIFACT_REGISTRY_REPO=${_ARTIFACT_REGISTRY_REPO}'
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
