@@ -18,8 +18,7 @@ spec:
       containers:
       - image: 'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/${_IMAGE_NAME}:${SHORT_SHA}'
         name: '${_APP_NAME}'
-      nodeSelector:
-        cloud.google.com/gke-nodepool: m2g
+      nodeName: pool-1
 ---
 apiVersion: v1
 kind: Service
