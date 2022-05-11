@@ -17,7 +17,7 @@ steps:
   #     - '_ARTIFACT_REGISTRY_REPO=${_ARTIFACT_REGISTRY_REPO}'
   #     - _IMAGE_NAME=${_IMAGE_NAME}
 
-  - name: 'debian:stretch'
+  - name: 'us-central1-docker.pkg.dev/truckbase-348717/envsubst/envsubst'
     entrypoint: 'bash'
     args: ['-c', "envsubst < deployment.yaml > deployment_v1.yaml"]
     env:
