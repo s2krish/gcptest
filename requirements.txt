@@ -1,2 +1,4 @@
 django==3.2.12
 gunicorn
+google-auth
+google-cloud-pubsub
