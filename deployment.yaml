@@ -16,7 +16,7 @@ spec:
         app: gcptest
     spec:
       containers:
-      - image: 'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/${_APPNAME}:${SHORT_SHA}'
+      - image: 'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/${_IMAGE_NAME}:${SHORT_SHA}'
         name: gcptest
       nodeSelector:
         cloud.google.com/gke-nodepool: default-pool
