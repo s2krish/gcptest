@@ -17,14 +17,15 @@ steps:
   #     - '_ARTIFACT_REGISTRY_REPO=${_ARTIFACT_REGISTRY_REPO}'
   #     - _IMAGE_NAME=${_IMAGE_NAME}
 
-  - name: 'ubuntu'
+  - name: 'ubuntu:trusty'
     entrypoint: 'bash'
     args: ['-c', "envsubst < deployment.yaml > deployment_v1.yaml"]
     env:
       - 'SHORT_SHA=${SHORT_SHA}'
       - 'PROJECT_ID=${PROJECT_ID}'
       - '_ARTIFACT_REGISTRY_REPO=${_ARTIFACT_REGISTRY_REPO}'
-      - _IMAGE_NAME=${_IMAGE_NAME}
+      - '_IMAGE_NAME=${_IMAGE_NAME}'
+      - '_APP_NAME=gcptest'
 
   # apply deployment.yaml
   - name: 'gcr.io/cloud-builders/kubectl'
