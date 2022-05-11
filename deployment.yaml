@@ -18,7 +18,8 @@ spec:
       containers:
       - image: 'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/${_IMAGE_NAME}:${SHORT_SHA}'
         name: '${_APP_NAME}'
-      nodeName: pool-1
+      nodeSelector:
+        mtype: micro
 ---
 apiVersion: v1
 kind: Service
