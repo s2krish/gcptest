@@ -9,7 +9,7 @@ steps:
     args: ['push',  'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/${_APPNAME}:${SHORT_SHA}']
 
   # Update environment variables
-  - name: 'ubuntu'
+  - name: 'bash'
     args: ['envsubst', '<', 'deployment.yaml', '>', 'deployment_v1.yaml']
     env:
       - 'SHORT_SHA=${SHORT_SHA}'
