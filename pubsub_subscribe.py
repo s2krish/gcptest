@@ -20,7 +20,9 @@ project_id = 'truckbase-348717'
 topic = f'projects/{project_id}/topics/test-pubsub-topic10'
 subscription_id = 'test-pubsub-topic10-sub1'
 
-subscriber = pubsub_v1.SubscriberClient(credentials=credentials)
+# subscriber = pubsub_v1.SubscriberClient(credentials=credentials)
+subscriber = pubsub_v1.SubscriberClient()  # from environment variable GOOGLE_APPLICATION_CREDENTIALS
+
 subscription_path = subscriber.subscription_path(project_id, subscription_id)
 
 

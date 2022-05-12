@@ -7,7 +7,8 @@ project_id = 'truckbase-348717'
 topic_id = 'test-pubsub-topic10'
 
 
-publisher = pubsub_v1.PublisherClient(credentials=credentials)
+# publisher = pubsub_v1.PublisherClient(credentials=credentials)
+publisher = pubsub_v1.PublisherClient()  # from environment variable GOOGLE_APPLICATION_CREDENTIALS
 topic_path = publisher.topic_path(project_id, topic_id)
 
 
