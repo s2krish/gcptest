@@ -1,7 +1,10 @@
+import logging
 import json
 import datetime
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+
+logger = logging.getLogger('django')
 
 @csrf_exempt
 def health(request):
@@ -13,6 +16,6 @@ def health(request):
     if data:
         html = f"{html}\n\nPayload: {data}"
 
-    print (html)
+    logger.info(html)
 
     return HttpResponse(html)
