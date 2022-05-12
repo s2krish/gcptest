@@ -12,8 +12,8 @@ project_id = 'truckbase-348717'
 secret_id = "testsecret"
 
 # Create the Secret Manager client.
-# client = secretmanager.SecretManagerServiceClient()
-client = secretmanager.SecretManagerServiceClient(credentials=credentials)
+client = secretmanager.SecretManagerServiceClient()
+# client = secretmanager.SecretManagerServiceClient(credentials=credentials)
 
 # Build the parent name from the project.
 parent = f"projects/{project_id}"
